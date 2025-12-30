@@ -1,0 +1,46 @@
+﻿generator client { provider = "prisma-client-js" }
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Team {
+  id          String   @id @default(cuid())
+  name        String
+  logo        String?
+  wallet      Int      @default(1000)
+  color       String?
+  players     Player[]
+  createdAt   DateTime @default(now())
+}
+
+model Player {
+  id        String   @id @default(cuid())
+  name      String
+  role      String
+  age       Int
+  basePrice Int
+  status    String   @default("UNSOLD")
+  team      Team?    @relation(fields: [teamId], references: [id])
+  teamId    String?
+}
+
+model Auction {
+  id             String   @id @default(cuid())
+  title          String
+  defaultIncrement Int    @default(5)
+  dynamicRules   Json?
+  isActive       Boolean  @default(true)
+  createdAt      DateTime @default(now())
+}
+
+model Bid {
+  id        String   @id @default(cuid())
+  amount    Int
+  team      Team     @relation(fields: [teamId], references: [id])
+  teamId    String
+  player    Player   @relation(fields: [playerId], references: [id])
+  playerId  String
+  createdAt DateTime @default(now())
+}

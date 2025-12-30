@@ -1,0 +1,45 @@
+{
+  "name": "turf-cricket-auction",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "server:dev": "ts-node-dev --respawn --transpile-only server/index.ts",
+    "server:start": "node server/dist/index.js",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev --name init",
+    "prisma:seed": "ts-node prisma/seed.ts",
+    "server:build": "tsc -p server/tsconfig.json",
+    "test": "echo \"No tests yet\" && exit 0"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.4.0",
+    "axios": "^1.4.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.1.4",
+    "express": "^4.18.2",
+    "next": "^14.2.35",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "socket.io": "^4.7.0",
+    "socket.io-client": "^4.7.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.0.3",
+    "@types/react": "19.2.7",
+    "autoprefixer": "^10.4.14",
+    "eslint": "8.44.0",
+    "eslint-config-next": "14.0.0",
+    "postcss": "^8.4.21",
+    "prisma": "^5.4.0",
+    "tailwindcss": "^3.4.0",
+    "ts-node": "^10.9.0",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.3.0"
+  }
+}
